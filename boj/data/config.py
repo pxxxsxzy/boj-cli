@@ -126,7 +126,7 @@ class FiletypeConfig:
             ongoing_dir=ongoing_dir,
             filetype=filetype,
             language=data.get("language", None),
-            main=data.get("filename", f"main.{filetype}"),
+            main=data.get("main") or data.get("filename") or f"main.{filetype}",
             source_dir=data.get("source_dir", ""),
             compile_=data.get("compile", None),
             run=data.get("run", None),
