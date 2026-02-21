@@ -126,7 +126,7 @@ class FiletypeConfig:
             ongoing_dir=ongoing_dir,
             filetype=filetype,
             language=data.get("language", None),
-            main=data.get("main") or data.get("filename") or f"main.{filetype}",
+            main=data.get("main", f"main.{filetype}"),
             source_dir=data.get("source_dir", ""),
             compile_=data.get("compile", None),
             run=data.get("run", None),
@@ -139,7 +139,7 @@ class FiletypeConfig:
             raise FatalError(f"missing 'language' option for the filetype {filetype}")
 
         if not config.main:
-            raise FatalError(f"missing 'filename' option for the filetype {filetype}")
+            raise FatalError(f"missing 'main' option for the filetype {filetype}")
 
         if not config.run:
             raise FatalError(f"missing 'run' option for the filetype {filetype}")
